@@ -1,0 +1,57 @@
+201228
+
+hp re-new
+
+画像透過変換
+https://www.peko-step.com/tool/alphachannel.html
+
+
+納入実績
+
+
+
+201228
+
+hp re-new
+
+画像透過変換
+https://www.peko-step.com/tool/alphachannel.html
+
+
+納入実績
+		  <div class='card-title'>自動研磨装置用PLCプログラムの作製(キーエンスkvnano+VT3)
+	    <div class='card-title'>モドバス制御接点入出力ユニットの設計
+        	    <div class='card-title'>モドバス制御CO2センサユニットの設計
+                	    <div class='card-title'>モドバス制御温度計ユニットの設計
+                        	    <div class='card-title'>モドバス制御アナログ電圧IOユニットの設計
+	    <div class='card-title'>アミューズメント設備用組み込み音源の制作
+	    <div class='card-title'>ICカード検査装置回路デバッグ/基板修正/Verilog修正
+	    <div class='card-title'>MODBUS接続用センサ基板ハード/ソフト(PIC16F877A)
+	    <div class='card-title'>MIC->PWM変換用基板作成/実装
+	    <div class='card-title'>リチウムイオンバッテリ温度特性測定
+	    <div class='card-title'>LEDパネル制御装置ハード/ソフト
+	    <div class='card-title'><a href='http://tocos-wireless.com/jp/casestudies/Link/index.html'>カウントパネル用無線リモコンソフトウェア（TOCOS無線モジュール）</a>
+
+		  <div class='card-title'>QRコードによる勤退時間取得システム(QRコードリーダ+PC, node+mongodb)
+	    <div class='card-title'>エネセーブ技研株式会社様/無線による電力計測システムの設計(monowireless, 4*8センサ, node+mongodb)
+	    <div class='card-title'>スケジュール管理カレンダーアプリの制作(node + mongodb
+	    <div class='card-title'><a href='http://linkbso.co.jp/' target='_blank'>株式会社リンク様HP更新(リキッドデザイン)
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/webapl/mycalc/calc2.html' target='_blank'>angularjsで電卓</a>
+	    <div class='card-title'><a href='http://blog.livedoor.jp/katsuooo_l/archives/41924624.html' target='_blank'>Androidでuartのモニタ(blog)</a>
+	    <div class='card-title'><a href='http://blog.livedoor.jp/katsuooo_l/archives/41605568.html' target='_blank'>AndroidのMic波形をplotlyでみる(blog)</a>
+	    <div class='card-title'>rx200ライブラリ用tool(C#)
+	    <div class='card-title'>株式会社リンク様HP作成
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/colorcode/audio.html' target='_blank'>ブラウザで音を鳴らす</a>
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/colorcode/convHexInt.html' target='_blank'>16進数を10進数に変換</a>
+	
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/colorcode/convColorHex.html' target='_blank'>hex color codeを10進表示</a>
+
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/colorcode/colorcodeview.html' target='_blank'>color codeの色をboxに表示</a>
+
+	    <div class='card-title'><a href='http://kdesignhp.web.fc2.com/colorcode/iro.html' target='_blank'>color codeをクリップボードにコピー</a>
+
+
+
+
+
+

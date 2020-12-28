@@ -1,0 +1,36 @@
+201228
+
+装置関係
+
+
+組込み,PLC
+		<span class='card-title'>自動研磨装置用PLCプログラムの作製(シーケンサ)</span>
+	    <span class='card-title'>モドバス制御接点入出力ユニットの設計</span>
+        <span class='card-title'>モドバス制御CO2センサユニットの設計</span>
+        <span class='card-title'>モドバス制御温度計ユニットの設計</span>
+        <span class='card-title'>モドバス制御アナログ電圧IOユニットの設計</span>
+	    <span class='card-title'>ICカード検査装置回路デバッグ/基板修正/Verilog修正</span>
+	    <span class='card-title'>MODBUS接続用センサ基板ハード/ソフト</span>
+	    <span class='card-title'>MIC->PWM変換用基板作成/実装</span>
+	    <span class='card-title'>LEDパネル制御装置ハード/ソフト</span>
+	    <span class='card-title'>カウントパネル用無線リモコンソフトウェア（MONO-wireless無線モジュール</span>
+
+	    <span class='card-title'>rx200ライブラリ用tool(C#)</span>
+その他
+	    <span class='card-title'>AndroidのMic波形をplotlyでみる(blog)</span>
+	    <span class='card-title'>リチウムイオンバッテリ温度特性測定</span>
+	    <span class='card-title'>アミューズメント設備用組み込み音源の制作</span>
+
+ウェブアプリ
+		<span class='card-title'>QRコードによる勤退時間取得システム(QRコードリーダ+PC, node+mongodb)</span>
+	    <span class='card-title'>スケジュール自動振り分けアプリの制作(node + mongodb</span>
+	    <span class='card-title'>エネセーブ技研株式会社様/無線による電力計測システムの設計(monowireless, 4*8センサ, node+mongodb)</span>
+	    <span class='card-title'>スケジュール管理カレンダーアプリの制作(node + mongodb</span>
+	    <span class='card-title'><a href='http://linkbso.co.jp/' target='_blank'>株式会社リンク様HP更新</span>
+	    <span class='card-title'>株式会社リンク様HP作成
+
+
+
+	    <span class='card-title'><a href='http://kdesignhp.web.fc2.com/webapl/mycalc/calc2.html' target='_blank'>angularjsで電卓</a>
+
+	    <span class='card-title'>target='_blank'>Androidでuartのモニタ(blog)</a>

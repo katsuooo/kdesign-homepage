@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="ケイデザイン,kdesign,ウェブアプリ,組込みアプリ,PLC,計測,回路設計,PLD設計">
+  <meta name="description" content="ウェブアプリやPCアプリや組込みアプリとその周辺設計してます">
+  <meta name="author" content="kdesign">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>ケイデザイン | アプリ屋</title>
+
+  <!-- Bootstrap core CSS -->
+  <!--
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <!-- Custom fonts for this template -->
+  <!--
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> 
+  <!-- Custom styles for this template -->
+  <!--
+  <link href="css/one-page-wonder.min.css" rel="stylesheet">
+  -->
+  <link href="css/one-page-wonder.css" rel="stylesheet">
+  <style>
+    .nav-text{
+      font-family: Sawarabi Gothic; 
+      font-weight: 100 !important; 
+      font-size: 14px !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <!--font-family:sawarabi gothic;-->
+      <a class="navbar-brand badge rounded-pill bg-dark" href="#" style='font-family:Sawarabi Gothic; font-weight: 100; font-size:22px;'>ケイデザイン</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-text" href="#">トップ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-text" href="#recent-dev">最近の実績</a>
+          </li>
+          <li class="nav-item">
+            <!--
+            <a class="nav-link nav-text" href="#" >納入実績</a>
+            -->
+            <a class="nav-link nav-text" href="#" data-bs-toggle='modal' data-bs-target='#worksModal'>納入実績</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">KDESIGN</h1>
+        <hr />
+        <h2 class="masthead-subheading mb-0">大阪淀川区のアプリ屋さんです</h2>
+        <h2 class="masthead-subheading mb-0">ウェブアプリや組込みアプリのプログラムを書いています</h2>
+        <!--
+        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">some works</a>          
+        -->
+        <button type='button' class="btn btn-primary btn-xl rounded-pill mt-5" data-bs-toggle='modal' data-bs-target='#worksModal'>some works</a>
+        <!-- Button trigger modal -->
+        <!--bs5 modal open sample
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button>
+        -->
+
+
+      </div>
+    </div>
+    <!--
+    <div class="bg-circle-1 bg-circle"></div>
+        <img class="img-fluid rounded-circle" src="img/calendar.jpg" alt="">
+    -->
+    <img class="bg-circle-1 bg-circle" style='opacity:0.2; z-index:1;' src="img/t_calendar.png" alt="">
+    <img class="bg-circle-2 bg-circle" style='opacity:0.2; z-index:1;' src="img/t_qr.png" alt="">
+    <img class="bg-circle-3 bg-circle" style='opacity:0.2; z-index:1;' src="img/t_plcx.png" alt="">
+    <img class="bg-circle-4 bg-circle" style='opacity:0.2; z-index:1;' src="img/t_calendar.png" alt="">
+    <!--
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+    -->
+
+
+  </header>
+
+  <section id='recent-dev'>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="img/calendar.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">予定一覧カレンダー</h2>
+            <p>デイサービス施設などで、利用者さん、スタッフさんのスケジュールをカレンダーアプリでパソコン管理。専用アプリなので操作も簡単です。
+              当日の詳細な情報も一覧できて、ケアサービスに集中できます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="img/qr.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">QRコード式タイムカード</h2>
+            <p>QRコードリーダを従業員さんの名前入りQRカードを作成して、タイムカードシステムを作成しました。QRコードを印刷するだけで、
+              増員にも対応できます。パソコンで出退勤時間を集計できますので、面倒な時間計算が簡単、正確にできます。お手軽に事務作業が簡素化できますね。
+            </Q></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="img/plcx.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">自動研磨装置のソフトウェア設計(PLC)</h2>
+            <p>PCLとスライダーを利用した自動研磨装置のPLCプログラミング。画面には小型液晶タッチパネルをつかって操作パネルをつくりました。メーカ様の製造ラインで使用されています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--works modal dialog-->
+  <div class="modal fade" id='worksModal' tabindex="-1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title badge rounded-pill bg-dark" style='font-size:16px;'>納入実績</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class='row'>
+            <div class='col-sm-4'>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-dark">ウェブアプリ</li>           
+                <li class="list-group-item list-group-item-warning">QRコードによる勤退時間取得システム</li>
+                <li class="list-group-item list-group-item-warning">スケジュール自動振り分けアプリの</li>
+                <li class="list-group-item list-group-item-warning">無線による電力計測システムの設計</li>
+                <li class="list-group-item list-group-item-warning">スケジュール管理カレンダーアプリの制作</li>
+                <li class="list-group-item list-group-item-warning">野球用品メーカHP作成/更新</li>
+              </ul>
+            </div>
+            <div class='col-sm-4'>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-dark">組込み/PLCPLC</li>           
+                <li class="list-group-item list-group-item-info">自動研磨装置用PLCプログラムの作製(シーケンサ)</li>
+                <li class="list-group-item list-group-item-info">モドバス制御接点入出力ユニットの設計</li>
+                <li class="list-group-item list-group-item-info">モドバス制御CO2センサユニットの設計</li>
+                <li class="list-group-item list-group-item-info">モドバス制御温度計ユニットの設計</li>
+                <li class="list-group-item list-group-item-info">モドバス制御アナログ電圧IOユニットの設計</li>
+                <li class="list-group-item list-group-item-info">ICカード検査装置回路デバッグ/基板修正/Verilog修正</li>
+                <li class="list-group-item list-group-item-info">MODBUS接続用センサ基板ハード/ソフト</li>
+                <li class="list-group-item list-group-item-info">MIC->PWM変換用基板作成/実装</li>            
+                <li class="list-group-item list-group-item-info">LEDパネル制御装置ハード/ソフト</li> 
+                <li class="list-group-item list-group-item-info">カウントパネル用無線リモコンソフトウェア（MONO-wireless無線モジュール</li>
+                <li class="list-group-item list-group-item-info">rx200ライブラリ用tool(C#)</li>
+              </ul>
+            </div>
+            <div class='col-sm-4'>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-dark">計測、回路図起こし</li>           
+                <li class="list-group-item list-group-item-light">AndroidのMic波形をplotlyでみる(実験)</li>
+                <li class="list-group-item list-group-item-light">リチウムイオンバッテリ温度特性測定</li>
+                <li class="list-group-item list-group-item-light">アミューズメント設備用組み込み音源の制作</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">閉じる</button>
+          <!--
+          <button type="button" class="btn btn-primary">Save changes</button>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <div class="m-0 text-center text-white small">
+        <span class='badge rounded-pill bg-dark'>Contact</span>
+        <span>ケイデザイン</span>
+        <span>大阪市淀川区木川東</span>
+        <span>/</span>
+        <span class='badge rounded-pill bg-dark'>e-mail</span>
+        <span>infomation.kdesign@gmail.com</span>
+      </div>
+      <p class="m-0 text-center text-white small">Copyright &copy; kdesign 2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+
+
+  <!--
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
