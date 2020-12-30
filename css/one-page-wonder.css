@@ -39,6 +39,7 @@ h6 {
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
+  z-index: 1000;
 }
 
 .bg-black {
@@ -81,6 +82,7 @@ header.masthead {
   background-position: center center;
   background-attachment: scroll;
   background-size: cover;
+  /*z-index: -2;*/
 }
 
 header.masthead .masthead-content {
