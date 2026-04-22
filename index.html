@@ -1,40 +1,294 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="ケイデザイン,kdesign,ウェブアプリ,組込みアプリ,PLC,計測,回路設計,PLD設計">
-  <meta name="description" content="ウェブアプリやPCアプリや組込みアプリとその周辺設計してます">
+  <meta name="keywords" content="ケイデザイン,kdesign,ウェブアプリ,組込みアプリ,PLC,計測,回路設計,IoT,スケジュール管理,勤怠管理">
+  <meta name="description" content="センサーデータ取得（組み込み）からウェブアプリでの可視化まで一気通貫で対応。スケジュール管理・勤怠管理・制御システムの受託開発。">
   <meta name="author" content="kdesign">
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>ケイデザイン | アプリ屋</title>
-
-  <!-- Bootstrap core CSS -->
-  <!--
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  -->
+  <title>ケイデザイン | 組み込み×ウェブの一気通貫開発</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- Custom fonts for this template -->
-  <!--
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  -->
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> 
-  <!-- Custom styles for this template -->
-  <!--
-  <link href="css/one-page-wonder.min.css" rel="stylesheet">
-  -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700&display=swap" rel="stylesheet">
   <link href="css/one-page-wonder.css" rel="stylesheet">
   <style>
-    .nav-text{
-      font-family: Sawarabi Gothic; 
-      font-weight: 100 !important; 
-      font-size: 16px !important;
+    :root {
+      --teal:      #0d9488;
+      --teal-dark: #0f766e;
+      --teal-light:#14b8a6;
+      --navy:      #0c1f2e;
+      --navy2:     #0d3347;
+      --text-dark: #0f172a;
+      --text-mid:  #475569;
+      --text-sub:  #94a3b8;
     }
+
+    body { font-family: 'Noto Sans JP', sans-serif; }
+
+    /* ── Navbar ── */
+    .navbar-custom {
+      background: rgba(30, 10, 70, 0.88) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(167,139,250,0.15) !important;
+    }
+
+    /* ── Masthead ── */
+    header.masthead {
+      background: linear-gradient(150deg, #4338ca 0%, #7c3aed 50%, #6366f1 100%) !important;
+    }
+    header.masthead .bg-circle {
+      background: linear-gradient(135deg, #5b21b6 0%, #4338ca 100%) !important;
+    }
+    header.masthead .masthead-content .masthead-heading {
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      font-size: 4rem;
+      letter-spacing: 0.3rem;
+      font-weight: 300;
+    }
+    @media (min-width: 992px) {
+      header.masthead .masthead-content .masthead-heading {
+        font-size: 6rem;
+        letter-spacing: 0.45rem;
+      }
+    }
+    header.masthead .masthead-content .masthead-subheading {
+      color: rgba(255,255,255,0.85) !important;
+      letter-spacing: 0.03rem;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background-color: var(--teal) !important;
+      border-color: var(--teal) !important;
+    }
+    .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+      background-color: var(--teal-dark) !important;
+      border-color: var(--teal-dark) !important;
+    }
+    .btn-primary:focus {
+      box-shadow: 0 0 0 0.2rem rgba(13,148,136,0.35) !important;
+    }
+    .btn-outline-teal {
+      color: var(--teal);
+      border: 1.5px solid var(--teal);
+      border-radius: 2rem;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline-teal:hover { background: var(--teal); color: #fff; }
+
+    /* ── Strengths section ── */
+    .strengths-section {
+      background-color: #f5f3ff;
+      padding: 5rem 0;
+    }
+    .strengths-section .section-title {
+      color: #1e1b4b;
+      font-weight: 300;
+      letter-spacing: 0.12rem;
+      position: relative;
+      padding-bottom: 1.1rem;
+      margin-bottom: 3rem;
+    }
+    .strengths-section .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 3rem; height: 2px;
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      border-radius: 2px;
+    }
+    .strength-card {
+      background: #ffffff;
+      border: 1px solid rgba(124,58,237,0.12);
+      border-radius: 1rem;
+      padding: 2rem 1.75rem;
+      height: 100%;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .strength-card:hover {
+      border-color: rgba(124,58,237,0.35);
+      box-shadow: 0 8px 32px rgba(124,58,237,0.1);
+    }
+    .strength-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .strength-card h3 {
+      color: #4338ca;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04rem;
+      margin-bottom: 0.85rem;
+    }
+    .strength-card p { color: #475569; font-size: 0.88rem; line-height: 1.85; margin: 0; }
+    .strength-card .accent-word { color: #7c3aed; font-weight: 700; }
+
+    /* ── Works section ── */
+    .section-works { background-color: #f0fdfa !important; }
+    .section-works .section-title { color: var(--text-dark) !important; }
+    .section-works .section-title::after {
+      background: linear-gradient(90deg, var(--teal), var(--teal-light)) !important;
+    }
+    .work-card {
+      background: #ffffff !important;
+      border: 1px solid rgba(0,0,0,0.06) !important;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .work-card:hover { box-shadow: 0 16px 40px rgba(13,148,136,0.18) !important; }
+    .work-tag {
+      color: var(--teal) !important;
+      background: rgba(13,148,136,0.08) !important;
+      border: 1px solid rgba(13,148,136,0.22) !important;
+    }
+    .work-card-body h3 { color: var(--text-dark) !important; }
+    .work-card-body p  { color: var(--text-mid)  !important; }
+
+    /* ── Skills section ── */
+    .skills-section { background-color: #ffffff; padding: 5rem 0; border-top: 1px solid #e2e8f0; }
+    .skills-section .section-title {
+      color: var(--text-dark);
+      font-weight: 300;
+      letter-spacing: 0.12rem;
+      position: relative;
+      padding-bottom: 1.1rem;
+      margin-bottom: 3rem;
+    }
+    .skills-section .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 3rem; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      border-radius: 2px;
+    }
+    .skill-category {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      height: 100%;
+    }
+    .skill-category h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06rem;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(13,148,136,0.2);
+    }
+    .skill-badge {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.4rem;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.78rem;
+      color: var(--text-dark);
+      margin: 0.2rem;
+    }
+
+    /* ── Contact section ── */
+    .contact-section {
+      background-color: #f0fdfa !important;
+      border-top: 1px solid rgba(13,148,136,0.15) !important;
+    }
+    .contact-section .contact-title { color: var(--text-dark) !important; }
+    .contact-section .contact-info  { color: var(--text-mid)  !important; }
+    .contact-section .contact-email { color: var(--teal) !important; }
+    .contact-section .contact-email:hover { color: var(--teal-dark) !important; }
+
+    /* ── Footer ── */
+    .bg-black { background-color: #071520 !important; }
+    .footer-accent { border-top: 1px solid rgba(13,148,136,0.2) !important; }
+
+    /* ── Modal ── */
+    .modal-content {
+      background-color: #fff !important;
+      color: var(--text-dark) !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+    .modal-header { border-bottom: 1px solid #e2e8f0 !important; }
+    .modal-footer { border-top:  1px solid #e2e8f0 !important; }
+    .modal-header .btn-close { filter: none !important; }
+    .works-list li {
+      color: var(--text-mid) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+    }
+
+    /* ── Career timeline ── */
+    .career-section { background-color: #ffffff; padding: 5rem 0; border-top: 1px solid #e2e8f0; }
+    .career-section .section-title {
+      color: var(--text-dark);
+      font-weight: 300;
+      letter-spacing: 0.12rem;
+      position: relative;
+      padding-bottom: 1.1rem;
+      margin-bottom: 3rem;
+    }
+    .career-section .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 3rem; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      border-radius: 2px;
+    }
+    .career-timeline {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 1.75rem;
+    }
+    .career-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.4rem; bottom: 0.4rem;
+      width: 2px;
+      background: linear-gradient(180deg, var(--teal) 0%, #a5b4fc 100%);
+      border-radius: 2px;
+    }
+    .career-item { position: relative; padding: 0 0 2.5rem 1.75rem; }
+    .career-item:last-child { padding-bottom: 0; }
+    .career-dot {
+      position: absolute;
+      left: -2.1rem; top: 0.3rem;
+      width: 0.8rem; height: 0.8rem;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--teal);
+    }
+    .career-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07rem;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: rgba(13,148,136,0.08);
+      border: 1px solid rgba(13,148,136,0.2);
+      border-radius: 2rem;
+      padding: 0.15rem 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .career-item h4 { color: var(--text-dark); font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; line-height: 1.4; }
+    .career-item p  { color: var(--text-mid); font-size: 0.88rem; line-height: 1.75; margin: 0; }
+    .career-name-label {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12rem;
+      color: var(--teal); text-transform: uppercase; margin-bottom: 0.25rem;
+    }
+    .career-name { font-size: 1.6rem; font-weight: 300; letter-spacing: 0.2rem; color: var(--text-dark); margin-bottom: 0; }
   </style>
 </head>
 
@@ -43,206 +297,297 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <!--font-family:sawarabi gothic;-->
-      <a class="navbar-brand badge rounded-pill bg-dark" href="#" style='font-family:Sawarabi Gothic; font-weight: 100; font-size:22px;'>ケイデザイン</a>
+      <a class="navbar-brand" href="#" style="font-family:'Noto Sans JP',sans-serif; font-weight:300; font-size:20px; letter-spacing:0.1rem;">ケイデザイン</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#">トップ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#recent-dev" style='font-weight:100 !important;'>最近の実績</a>
-          </li>
-          <li class="nav-item">
-            <!--
-            <a class="nav-link nav-text" href="#" >納入実績</a>
-            -->
-            <a class="nav-link nav-text" href="#" data-bs-toggle='modal' data-bs-target='#worksModal' style='font-weight:100 !important;;'>納入実績</a>
-          </li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#" style="font-weight:300; font-size:15px;">トップ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#strengths" style="font-weight:300; font-size:15px;">強み</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recent-dev" style="font-weight:300; font-size:15px;">実績</a></li>
+          <li class="nav-item"><a class="nav-link" href="#career" style="font-weight:300; font-size:15px;">経歴</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills" style="font-weight:300; font-size:15px;">対応技術</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" style="font-weight:300; font-size:15px;">お問い合わせ</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Hero -->
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
         <h1 class="masthead-heading mb-0">KDESIGN</h1>
-        <hr />
-        <h2 class="masthead-subheading mb-0">大阪淀川区のアプリ屋さんです</h2>
-        <h2 class="masthead-subheading mb-0">ウェブアプリや組込みアプリのプログラムを書いています</h2>
-        <!--
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">some works</a>          
-        -->
-        <button type='button' class="btn btn-primary btn-xl rounded-pill mt-5" data-bs-toggle='modal' data-bs-target='#worksModal' style='position:relative;'>some works</a>
-  
-        <!-- Button trigger modal -->
-        <!--bs5 modal open sample
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Launch demo modal
-        </button>
-        -->
-
-
+        <hr style="border-color:rgba(20,184,166,0.3); width:3rem; margin:1.5rem auto;" />
+        <h2 class="masthead-subheading mb-0">センサーから画面まで、ひとりで完結。</h2>
+        <h2 class="masthead-subheading mb-0">スケジュール管理・勤怠管理・制御システムを、オーダーメイドで開発します</h2>
+        <button type="button" class="btn btn-primary btn-xl rounded-pill mt-5" data-bs-toggle="modal" data-bs-target="#worksModal" style="position:relative;">納入実績を見る</button>
       </div>
     </div>
-    <!--
-    <div class="bg-circle-1 bg-circle"></div>
-        <img class="img-fluid rounded-circle" src="img/calendar.jpg" alt="">
-    -->
-    <img class="bg-circle-1 bg-circle" style='opacity:0.2;' src="img/t_calendar.png" alt="">
-    <img class="bg-circle-2 bg-circle" style='opacity:0.2;' src="img/t_qr.png" alt="">
-    <img class="bg-circle-3 bg-circle" style='opacity:0.2;' src="img/t_plcx.png" alt="">
-    <img class="bg-circle-4 bg-circle" style='opacity:0.2;' src="img/t_calendar.png" alt="">
-    <!--
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-    -->
-
-
+    <img class="bg-circle-1 bg-circle" style="opacity:0.12;" src="img/t_calendar.png" alt="">
+    <img class="bg-circle-2 bg-circle" style="opacity:0.12;" src="img/t_qr.png" alt="">
+    <img class="bg-circle-3 bg-circle" style="opacity:0.12;" src="img/t_plcx.png" alt="">
+    <img class="bg-circle-4 bg-circle" style="opacity:0.12;" src="img/t_calendar.png" alt="">
   </header>
 
-  <section id='recent-dev'>
+  <!-- Strengths -->
+  <section id="strengths" class="strengths-section">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/calendar.jpg" alt="">
+      <h2 class="text-center section-title">選ばれる理由</h2>
+      <div class="row g-4">
+
+        <div class="col-lg-4">
+          <div class="strength-card">
+            <span class="strength-icon">⚙️</span>
+            <h3>垂直統合の開発力</h3>
+            <p>センサーデータの取得（<span class="accent-word">組み込み</span>）から、そのデータの可視化・分析（<span class="accent-word">ウェブアプリ</span>）まで、ひとりで完結できます。異なる技術領域をつなぐ設計力が、最適なシステムを生みます。</p>
           </div>
         </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">予定一覧カレンダー</h2>
-            <p>デイサービス施設などで、利用者さん、スタッフさんのスケジュールをカレンダーアプリでパソコン管理。専用アプリなので操作も簡単です。
-              当日の詳細な情報も一覧できて、ケアサービスに集中できます。
-            </p>
+
+        <div class="col-lg-4">
+          <div class="strength-card">
+            <span class="strength-icon">🔗</span>
+            <h3>窓口が一本化される安心感</h3>
+            <p>ハードとソフト、両方わかる開発者が対応するため、<span class="accent-word">仕様の調整コストを大幅に削減</span>。「言った・言わない」や認識のズレが起きにくく、スムーズな開発が実現します。</p>
           </div>
         </div>
+
+        <div class="col-lg-4">
+          <div class="strength-card">
+            <span class="strength-icon">🏭</span>
+            <h3>現場で培った実績</h3>
+            <p>介護施設のスケジュール管理・製造ライン制御・IoT計測など、<span class="accent-word">現場の業務フローを理解した上での開発実績</span>があります。紹介を中心に継続的なご依頼をいただいています。</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- Works Card Grid -->
+  <section id="recent-dev" class="section-works">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/qr.jpg" alt="">
+      <h2 class="text-center section-title">最近の実績</h2>
+      <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="work-card">
+            <div class="work-card-img"><img src="img/calendar.jpg" alt="予定一覧カレンダー"></div>
+            <div class="work-card-body">
+              <span class="work-tag">ウェブアプリ ／ 介護・医療</span>
+              <h3>予定一覧カレンダー</h3>
+              <p>デイサービス・訪問介護施設で導入実績あり。利用者・スタッフのスケジュールをパソコンで一元管理し、当日の情報をひと目で確認。ケアの質向上をサポートします。</p>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="p-5">
-            <h2 class="display-4">QRコード式タイムカード</h2>
-            <p>QRコードリーダを従業員さんの名前入りQRカードを作成して、タイムカードシステムを作成しました。QRコードを印刷するだけで、
-              増員にも対応できます。パソコンで出退勤時間を集計できますので、面倒な時間計算が簡単、正確にできます。お手軽に事務作業が簡素化できますね。
-            </Q></p>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="work-card">
+            <div class="work-card-img"><img src="img/qr.jpg" alt="QRコード式タイムカード"></div>
+            <div class="work-card-body">
+              <span class="work-tag">ウェブアプリ ／ 勤怠管理</span>
+              <h3>QRコード式タイムカード</h3>
+              <p>QRカードを配布するだけで即日導入。読み取り→出退勤記録→集計まで自動化し、面倒な時間計算から解放されます。増員・変更もQRを印刷するだけで対応できます。</p>
+            </div>
           </div>
         </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="work-card">
+            <div class="work-card-img"><img src="img/plcx.jpg" alt="自動研磨装置"></div>
+            <div class="work-card-body">
+              <span class="work-tag">組込み ／ PLC制御</span>
+              <h3>製造ライン向け制御システム</h3>
+              <p>PLCプログラミングからタッチパネルUI設計まで一貫対応。自動研磨装置の制御システムをメーカ様の製造ラインで納入。既存設備への組み込みや新規開発にも対応します。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn-outline-teal" data-bs-toggle="modal" data-bs-target="#worksModal">すべての納入実績を見る</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- Career -->
+  <section id="career" class="career-section">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/plcx.jpg" alt="">
-          </div>
+      <h2 class="text-center section-title">経歴</h2>
+      <div class="text-center mb-5">
+        <p class="career-name-label">代表</p>
+        <h3 class="career-name">勝浦 高之</h3>
+      </div>
+      <div class="career-timeline">
+
+        <div class="career-item">
+          <span class="career-dot"></span>
+          <span class="career-tag">学歴</span>
+          <h4>岡山大学 工学部 電子工学科 卒業</h4>
         </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">自動研磨装置のソフトウェア設計(PLC)</h2>
-            <p>PCLとスライダーを利用した自動研磨装置のPLCプログラミング。画面には小型液晶タッチパネルをつかって操作パネルをつくりました。メーカ様の製造ラインで使用されています。</p>
-          </div>
+
+        <div class="career-item">
+          <span class="career-dot"></span>
+          <span class="career-tag">職歴</span>
+          <h4>TOA株式会社</h4>
+          <p>業務用放送設備の回路設計・マイコンソフトウェア開発に従事</p>
         </div>
+
+        <div class="career-item">
+          <span class="career-dot"></span>
+          <span class="career-tag">職歴</span>
+          <h4>VTT株式会社</h4>
+          <p>半導体検査装置の制御ソフトウェア開発に従事</p>
+        </div>
+
+        <div class="career-item">
+          <span class="career-dot"></span>
+          <span class="career-tag">現在</span>
+          <h4>フリーランス独立</h4>
+          <p>回路設計・ソフトウェア開発の受託を中心に活動中</p>
+        </div>
+
       </div>
     </div>
   </section>
-  <!--works modal dialog-->
-  <div class="modal fade" id='worksModal' tabindex="-1">
+
+  <!-- Skills -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <h2 class="text-center section-title">対応技術・得意領域</h2>
+      <div class="row g-3">
+
+        <div class="col-md-3 col-sm-6">
+          <div class="skill-category">
+            <h4>組込み / PLC</h4>
+            <span class="skill-badge">シーケンサ（三菱等）</span>
+            <span class="skill-badge">MODBUS</span>
+            <span class="skill-badge">C / C++</span>
+            <span class="skill-badge">PIC / ARM マイコン</span>
+            <span class="skill-badge">タッチパネルUI</span>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="skill-category">
+            <h4>ウェブアプリ</h4>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Google Apps Script</span>
+            <span class="skill-badge">Bootstrap</span>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="skill-category">
+            <h4>回路 / 計測</h4>
+            <span class="skill-badge">回路設計</span>
+            <span class="skill-badge">基板実装</span>
+            <span class="skill-badge">センサー計測</span>
+            <span class="skill-badge">Verilog / PLD</span>
+            <span class="skill-badge">無線モジュール</span>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="skill-category">
+            <h4>対応業種・領域</h4>
+            <span class="skill-badge">介護 / 医療</span>
+            <span class="skill-badge">製造 / FA</span>
+            <span class="skill-badge">IoT 計測</span>
+            <span class="skill-badge">勤怠 / 業務効率化</span>
+            <span class="skill-badge">スケジュール管理</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section text-center">
+    <div class="container">
+      <h2 class="contact-title">まずはお気軽にご相談ください</h2>
+      <p class="contact-info">開発のご依頼・お見積り・ご質問など、メールにてお問い合わせください。</p>
+      <p class="contact-info">ケイデザイン &nbsp;|&nbsp; 大阪市北区天満</p>
+      <a href="mailto:infomation.kdesign@gmail.com" class="contact-email">infomation.kdesign@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- Works Modal -->
+  <div class="modal fade" id="worksModal" tabindex="-1">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title badge rounded-pill bg-dark" style='font-size:16px;'>納入実績(抜粋)</h5>
+          <h5 class="modal-title" style="font-size:16px; font-weight:600;">納入実績（抜粋）</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class='row'>
-            <div class='col-sm-4'>
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-dark">ウェブアプリ</li>           
-                <li class="list-group-item list-group-item-warning">ツイッター情報を取集してカレンダーイベントに追加</li>
-                <li class="list-group-item list-group-item-warning">QRコードによる勤退時間取得システム</li>
-                <li class="list-group-item list-group-item-warning">スケジュール自動振り分けアプリの制作</li>
-                <li class="list-group-item list-group-item-warning">無線による電力計測システムの設計</li>
-                <li class="list-group-item list-group-item-warning">スケジュール管理カレンダーアプリの制作</li>
-                <li class="list-group-item list-group-item-warning">野球用品メーカHP作成/更新</li>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-sm-4">
+              <div class="works-category-img">
+                <img src="img/calendar.jpg" alt="ウェブアプリ">
+                <div class="works-category-label">ウェブアプリ</div>
+              </div>
+              <ul class="works-list">
+                <li>ツイッター情報を取集してカレンダーイベントに追加</li>
+                <li>QRコードによる勤退時間取得システム</li>
+                <li>スケジュール自動振り分けアプリの制作</li>
+                <li>無線による電力計測システムの設計</li>
+                <li>スケジュール管理カレンダーアプリの制作</li>
+                <li>野球用品メーカHP作成/更新</li>
               </ul>
             </div>
-            <div class='col-sm-4'>
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-dark">組込み/PLC</li>
-                <li class="list-group-item list-group-item-info">薬液供給装置の制御(シーケンサ)</li>      
-                <li class="list-group-item list-group-item-info">異なるカセットへのウェハ入替装置の制御(シーケンサ)</li>           
-                <li class="list-group-item list-group-item-info">自動研磨装置用PLCプログラムの作製(シーケンサ)</li>
-                <li class="list-group-item list-group-item-info">MODBUS制御接点入出力ユニットの設計</li>
-                <li class="list-group-item list-group-item-info">MODBUS制御CO2センサユニットの設計</li>
-                <li class="list-group-item list-group-item-info">MODBUS制御温度計ユニットの設計</li>
-                <li class="list-group-item list-group-item-info">MODBUS制御アナログ電圧IOユニットの設計</li>
-                <li class="list-group-item list-group-item-info">ICカード検査装置回路デバッグ/基板修正/Verilog修正</li>
-                <li class="list-group-item list-group-item-info">MODBUS接続用センサ基板ハード/ソフト</li>
-                <li class="list-group-item list-group-item-info">MIC->PWM変換用基板作成/実装</li>            
-                <li class="list-group-item list-group-item-info">LEDパネル制御装置ハード/ソフト</li> 
-                <li class="list-group-item list-group-item-info">カウントパネル用無線リモコンソフトウェア（MONO-wireless無線モジュール</li>
-                <li class="list-group-item list-group-item-info">rx200ライブラリ用tool(C#)</li>
+            <div class="col-sm-4">
+              <div class="works-category-img">
+                <img src="img/plcx.jpg" alt="組込み/PLC">
+                <div class="works-category-label">組込み / PLC</div>
+              </div>
+              <ul class="works-list">
+                <li>薬液供給装置の制御(シーケンサ)</li>
+                <li>異なるカセットへのウェハ入替装置の制御(シーケンサ)</li>
+                <li>自動研磨装置用PLCプログラムの作製(シーケンサ)</li>
+                <li>MODBUS制御接点入出力ユニットの設計</li>
+                <li>MODBUS制御CO2センサユニットの設計</li>
+                <li>MODBUS制御温度計ユニットの設計</li>
+                <li>MODBUS制御アナログ電圧IOユニットの設計</li>
+                <li>ICカード検査装置回路デバッグ/基板修正/Verilog修正</li>
+                <li>MODBUS接続用センサ基板ハード/ソフト</li>
+                <li>MIC->PWM変換用基板作成/実装</li>
+                <li>LEDパネル制御装置ハード/ソフト</li>
+                <li>カウントパネル用無線リモコンソフトウェア</li>
+                <li>rx200ライブラリ用tool(C#)</li>
               </ul>
             </div>
-            <div class='col-sm-4'>
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-dark">計測、回路図起こし</li>           
-                <li class="list-group-item list-group-item-light">AndroidのMic波形をplotlyでみる(実験)</li>
-                <li class="list-group-item list-group-item-light">リチウムイオンバッテリ温度特性測定</li>
-                <li class="list-group-item list-group-item-light">アミューズメント設備用組み込み音源の制作</li>
+            <div class="col-sm-4">
+              <div class="works-category-img">
+                <img src="top-pic/fr20.PNG" alt="計測・回路設計">
+                <div class="works-category-label">計測 / 回路設計</div>
+              </div>
+              <ul class="works-list">
+                <li>AndroidのMic波形をplotlyでみる(実験)</li>
+                <li>リチウムイオンバッテリ温度特性測定</li>
+                <li>アミューズメント設備用組み込み音源の制作</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Footer -->
-  <footer class="py-5 bg-black">
+  <footer class="py-5 bg-black footer-accent">
     <div class="container">
-      <div class="m-0 text-center text-white small">
-        <span class='badge rounded-pill bg-dark'>Contact</span>
-        <span>ケイデザイン</span>
-        <span>大阪市淀川区木川東</span>
-        <span>/</span>
-        <span class='badge rounded-pill bg-dark'>e-mail</span>
-        <span>infomation.kdesign@gmail.com</span>
-      </div>
-      <p class="m-0 text-center text-white small">Copyright &copy; kdesign 2021</p>
+      <p class="m-0 text-center text-white small">Copyright &copy; kdesign 2024</p>
     </div>
-    <!-- /.container -->
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-
-
-  <!--
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-
 </html>
